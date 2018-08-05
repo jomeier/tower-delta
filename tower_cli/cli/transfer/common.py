@@ -46,6 +46,43 @@ API_POST_OPTIONS = {
             "required": False,
             "default": {}
         }
+    },
+    'user': {
+        "username": {
+            "required": True
+        },
+        "email": {
+            "required": True,
+            "default": ""
+        },
+        "is_superuser": {
+            "required": False,
+            "default": False
+        },
+        "is_system_auditor": {
+            "required": False,
+            "default": False
+        },
+        "first_name": {
+            "required": True,
+            "default": ""
+        },
+        "last_name": {
+            "required": True,
+            "default": ""
+        },
+        "ldap_dn": {
+            "required": False,
+            "default": ""
+        },
+        "auth": {
+            "required": False,
+             "default": []
+        },
+        "external_account": {
+            "required": False 
+        }
+
     }
 }
 NOTIFICATION_TYPES = ['notification_templates_error', 'notification_templates_success']
@@ -296,6 +333,9 @@ def process_inventory_groups(group_json):
     group_to_return = {}
     map_node_to_post_options(group_post_options, group_json, group_to_return)
     name_to_id_map = {}
+
+    group_to_return['name'] = group_json['name']
+
 
     # Now we need to get the children for the group (which should all be groups)
     if 'related' in group_json and 'children' in group_json['related']:

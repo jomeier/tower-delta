@@ -5,7 +5,7 @@ from tower_cli.conf import settings
 from tower_cli.utils import parser
 from tower_cli.resources.role import RESOURCE_FIELDS
 import click
-
+#from pudb import set_trace; set_trace()
 
 class Receiver:
     def receive(self, all=False, asset_input=None):
@@ -23,6 +23,7 @@ class Receiver:
         stdout.write("\n")
 
     def export_assets(self, all, asset_input):
+
         # Extract and consolidate all of the items we got on the command line
         assets_to_export = common.get_assets_from_input(all, asset_input)
 
@@ -30,6 +31,7 @@ class Receiver:
         exported_objects = []
 
         for asset_type in assets_to_export:
+
             # Load the API options for this asset_type of asset
             types_api_options = common.get_api_options(asset_type)
 
@@ -53,6 +55,7 @@ class Receiver:
 
             # Next we are going to loop over the objects we got from Tower
             for asset in acquired_assets_to_export:
+
                 # If this object is managed_by_tower then move on
                 if 'managed_by_tower' in asset and asset['managed_by_tower']:
                     continue
@@ -71,7 +74,7 @@ class Receiver:
                 if asset_type == 'project':
                     # Exported projects that are not manual don't need a local path
                     common.remove_local_path_from_scm_project(exported_asset)
-
+              
                 # Next we are going to go after any of
                 for relation in tower_cli.get_resource(asset_type).related:
                     if common.ASSET_RELATION_KEY not in exported_asset:
@@ -113,5 +116,5 @@ class Receiver:
 
                 # Finally add the object to the list of objects that are being exported
                 exported_objects.append(exported_asset)
-
+    
         return exported_objects

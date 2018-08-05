@@ -10,6 +10,7 @@ import os
 import sys
 from tower_cli.api import client
 import copy
+#from pudb import set_trace; set_trace()
 
 
 class Sender(LoggingCommand):
