@@ -1,0 +1,80 @@
+# Python
+*.py[co]
+__pycache__
+build
+
+# Emacs
+*~
+.\#*
+
+# RPM
+MANIFEST
+dist
+rpm-build
+
+# Eclipse/PyDev
+.project
+.pydevproject
+
+# PyCharm
+.idea
+
+#IntelliJ IDEA
+*.iml
+
+# Mac OS X
+.DS_Store
+
+# manpage build
+docs/man/man3/*
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# docsite
+docsite/latest/rst/modules
+docsite/latest/*.html
+docsite/latest/_static/*.gif
+docsite/latest/_static/*.png
+docsite/latest/_static/websupport.js
+docsite/latest/searchindex.js
+docsite/latest/htmlout
+
+# deb building
+debian/
+
+# Vim swap files
+*.swp
+*.swo
+
+# coverage
+.coverage-html/
+.coverage
+
+# tox
+.tox
+
+# jenkins
+cover-html
+coverage.xml
+results.xml
+
+# ignore personal configs
+.tower_cli.cfg
+
+# ignore python egg
+*.egg-info/
+
+# Sphinx
+docs_wip/build/*
+
+# tower-cli v1 build
+tower_cli_v1/
+bin/tower-cli-v1
+setup_v1.py
+
+# tower-cli v2 build
+tower_cli_v2/
+bin/tower-cli-v2
+setup_v2.py
